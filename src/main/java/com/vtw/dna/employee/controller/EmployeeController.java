@@ -21,11 +21,11 @@ public class EmployeeController {
     @GetMapping
     public Page<Employee> list(@RequestParam("page") int page,
                                @RequestParam("size") int size,
-                               @RequestParam(value = "sortColumn", defaultValue = "id") String sortColumn,
+                               @RequestParam(value = "sortBy", defaultValue = "id") String sortBy,
                                @RequestParam(value = "sortDir", defaultValue = "asc") String sortDir,
-                               @RequestParam(value = "searchName", defaultValue = "") String searchName) {
-        Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.fromString(sortDir), sortColumn));
-        Page<Employee> employees = repository.findAllByNameContains(pageable, searchName);
+                               @RequestParam(value = "filter", defaultValue = "") String filter) {
+        Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.fromString(sortDir), sortBy));
+        Page<Employee> employees = repository.findAllByNameContains(pageable, filter);
         return employees;
     }
 

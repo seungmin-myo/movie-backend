@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 @Getter
@@ -17,7 +17,7 @@ public class Employee {
     private Long id;
     private String name;
     private Gender gender;
-    private LocalDate birthDate;
+    private Date birthDate;
 
     public Employee update(Employee newOne) {
         this.name = newOne.name;
