@@ -1,23 +1,29 @@
 package com.vtw.dna.movie;
 
+import com.vtw.dna.movie.screening.Screening;
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.time.LocalDateTime;
+import javax.persistence.*;
+import java.time.Duration;
 
 @Entity
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Movie {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
-    private String engName;
+    private String gtitle;
+    private Duration runningTime;
+    private Money fee;
+    private DiscountPolicy discountPolicy;
 
 
+
+    public Money calculateMovieFee(Screening screening) {
+        return fee.minus(discountPolicy.calculateDiscountAmount(screening));
+    }
 }
