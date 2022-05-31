@@ -1,4 +1,4 @@
-package com.vtw.dna.movie;
+package com.vtw.dna.movie.discount.condition;
 
 import com.vtw.dna.movie.screening.Screening;
 import lombok.AllArgsConstructor;

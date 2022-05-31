@@ -6,21 +6,24 @@ import lombok.Data;
 
 import javax.persistence.*;
 
-@Entity
-@Data
+//@Entity
 public class Reservation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    // 상영 정보
+//    @ManyToOne(fetch = FetchType.LAZY)
     private Screening screening;
 
+    // 고객명
     private String customerName;
-    @ManyToOne
-    @JoinColumn(name = "fee_id")
+
+    // 금액
     private Money fee;
+
+    // 인원 수
     private int audienceCount;
 
 
