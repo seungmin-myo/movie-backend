@@ -8,6 +8,7 @@ import lombok.*;
 import javax.persistence.*;
 import java.time.Duration;
 
+@Entity
 public class Movie {
 
     @Id
@@ -23,9 +24,11 @@ public class Movie {
 
     // 영화 관람 금액
     @Getter
+    @Transient
     private Money fee;
 
     // 영화 할인 정책 정보
+    @Transient
     private DiscountPolicy discountPolicy;
 
 

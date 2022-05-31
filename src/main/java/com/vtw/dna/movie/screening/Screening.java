@@ -8,6 +8,7 @@ import lombok.Data;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@Entity
 public class Screening {
 
     @Id
@@ -15,7 +16,7 @@ public class Screening {
     private Long id;
 
     // 영화
-//    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Movie movie;
     
     // 회차
