@@ -8,6 +8,7 @@ import com.vtw.dna.movie.screening.Screening;
 import lombok.*;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.time.Duration;
 
 @Entity
@@ -26,6 +27,8 @@ public class Movie {
     // 상영 시간
     private Duration runningTime;
 
+    private BigDecimal cost;
+
     // 영화 관람 금액
     @Transient
     private Money fee;
@@ -34,9 +37,10 @@ public class Movie {
     @Transient
     private DiscountPolicy discountPolicy;
 
-    public Movie(String title, Duration runningTime, Money fee, DiscountPolicy discountPolicy) {
+    public Movie(String title, Duration runningTime, BigDecimal cost, Money fee, DiscountPolicy discountPolicy) {
         this.title = title;
         this.runningTime = runningTime;
+        this.cost = cost;
         this.fee = fee;
         this.discountPolicy = discountPolicy;
     }

@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 @Getter
@@ -25,6 +26,8 @@ public class Reservation {
     @ManyToOne(fetch = FetchType.LAZY)
     private Screening screening;
 
+    private BigDecimal discountCost;
+
     // 금액
     @Transient
     private Money fee;
@@ -35,6 +38,7 @@ public class Reservation {
     public Reservation(String customerName, Screening screening, Money fee, int audienceCount) {
         this.customerName = customerName;
         this.screening = screening;
+        this.discountCost = fee.getAmount();
         this.fee = fee;
         this.audienceCount = audienceCount;
     }

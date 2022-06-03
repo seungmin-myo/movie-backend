@@ -1,13 +1,11 @@
 package com.vtw.dna.movie;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
 
-import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Objects;
 
+@Getter
 public class Money {
     public static final Money ZERO = Money.wons(0);
 
