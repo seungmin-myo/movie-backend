@@ -4,11 +4,13 @@ import com.vtw.dna.movie.Money;
 import com.vtw.dna.movie.Movie;
 import com.vtw.dna.movie.reservation.Reservation;
 import lombok.Data;
+import lombok.Getter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+@Getter
 public class Screening {
 
     @Id
@@ -18,10 +20,10 @@ public class Screening {
     // 영화
     @ManyToOne(fetch = FetchType.LAZY)
     private Movie movie;
-    
+
     // 회차
     private int sequence;
-    
+
     // 시작 시간
     private LocalDateTime whenScreened;
 
@@ -46,10 +48,16 @@ public class Screening {
     }
 
     // 예약 정보 반환
-    public Reservation reserve(String name, int audienceCount) {
-        return new Reservation(name, this, calculateFee(audienceCount), audienceCount);
+    public Reservation reserve(String customerName, int audienceCount) {
+        return new Reservation(customerName, this, calculateFee(audienceCount), audienceCount);
     }
 
+    public Screening update(Screening newOne) {
+        this.movie = newOne.movie;
+        this.sequence = newOne.sequence;
+        this.whenScreened = newOne.whenScreened;
+        return this;
+    }
 
 
 }

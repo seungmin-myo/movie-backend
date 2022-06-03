@@ -1,5 +1,7 @@
 package com.vtw.dna.movie;
 
+import com.vtw.dna.employee.Employee;
+import com.vtw.dna.movie.discount.policy.AmountDiscountPolicy;
 import com.vtw.dna.movie.discount.policy.DefaultDiscountPolicy;
 import com.vtw.dna.movie.discount.policy.DiscountPolicy;
 import com.vtw.dna.movie.screening.Screening;
@@ -9,6 +11,7 @@ import javax.persistence.*;
 import java.time.Duration;
 
 @Entity
+@Getter
 public class Movie {
 
     @Id
@@ -23,7 +26,6 @@ public class Movie {
     private Duration runningTime;
 
     // 영화 관람 금액
-    @Getter
     @Transient
     private Money fee;
 
@@ -31,10 +33,24 @@ public class Movie {
     @Transient
     private DiscountPolicy discountPolicy;
 
+    public Movie(String title, Duration runningTime, Money fee, DiscountPolicy discountPolicy) {
+        this.title = title;
+        this.runningTime = runningTime;
+        this.fee = fee;
+        this.discountPolicy = discountPolicy;
+    }
 
     // 상영 정보에 따라 할인 정책을 대입하여 영화 관람 가격을 계산 후 반환
     public Money calculateMovieFee(Screening screening) {
         return fee.minus(discountPolicy.calculateDiscountAmount(screening));
+    }
+
+    public Movie update(Movie newOne) {
+        this.title = newOne.title;
+        this.runningTime = newOne.runningTime;
+//        this.fee = newOne.fee;
+//        this.discountPolicy = newOne.discountPolicy;
+        return this;
     }
 
 }

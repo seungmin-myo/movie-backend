@@ -6,6 +6,8 @@ import com.vtw.dna.movie.screening.Screening;
 
 // 금액 할인 정책
 public class AmountDiscountPolicy extends DefaultDiscountPolicy {
+
+    // 할인금액
     private Money discountAmount;
 
     public AmountDiscountPolicy(Money discountAmount, DiscountCondition... discountConditions) {

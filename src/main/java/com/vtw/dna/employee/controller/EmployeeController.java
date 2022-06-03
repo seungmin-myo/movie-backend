@@ -50,7 +50,7 @@ public class EmployeeController {
     }
 
     @DeleteMapping("/{id}")
-    public Employee update(@PathVariable Long id) {
+    public Employee delete(@PathVariable Long id) {
         Employee oldOne = repository.findById(id).orElseThrow();
         repository.delete(oldOne);
         return oldOne;

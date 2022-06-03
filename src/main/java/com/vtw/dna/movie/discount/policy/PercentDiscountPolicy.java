@@ -6,6 +6,8 @@ import com.vtw.dna.movie.screening.Screening;
 
 // 비율 할인 정책
 public class PercentDiscountPolicy extends DefaultDiscountPolicy {
+
+    // 할인비율
     private double percent;
 
     public PercentDiscountPolicy(double percent, DiscountCondition... conditions) {

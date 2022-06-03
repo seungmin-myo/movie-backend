@@ -4,18 +4,19 @@ import com.vtw.dna.movie.Money;
 import com.vtw.dna.movie.screening.Screening;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
+@Getter
 @NoArgsConstructor
 public class Reservation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
 
     // 고객명
     private String customerName;
@@ -36,5 +37,13 @@ public class Reservation {
         this.screening = screening;
         this.fee = fee;
         this.audienceCount = audienceCount;
+    }
+
+    public Reservation update(Reservation newOne) {
+        this.customerName = newOne.customerName;
+        this.screening = newOne.screening;
+//        this.fee = newOne.fee;
+        this.audienceCount = newOne.audienceCount;
+        return this;
     }
 }
