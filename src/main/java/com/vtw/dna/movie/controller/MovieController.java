@@ -5,6 +5,7 @@ import com.vtw.dna.movie.Movie;
 import com.vtw.dna.movie.discount.condition.PeriodCondition;
 import com.vtw.dna.movie.discount.condition.SequenceCondition;
 import com.vtw.dna.movie.discount.policy.AmountDiscountPolicy;
+import com.vtw.dna.movie.discount.policy.NoneDiscountPolicy;
 import com.vtw.dna.movie.discount.policy.PercentDiscountPolicy;
 import com.vtw.dna.movie.repository.MovieRepository;
 import lombok.AllArgsConstructor;
@@ -57,6 +58,12 @@ public class MovieController {
                         new SequenceCondition(2),
                         new PeriodCondition(DayOfWeek.TUESDAY, LocalTime.of(14,0), LocalTime.of(16,59)),
                         new PeriodCondition(DayOfWeek.THURSDAY, LocalTime.of(10,0), LocalTime.of(13,59))));
+
+        // starwars sample
+        Movie starwars = new Movie("스타워즈",
+                Duration.ofMinutes(210),
+                Money.wons(10000),
+                new NoneDiscountPolicy());
 
         repository.save(newOne);
         return newOne;
