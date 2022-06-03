@@ -12,6 +12,7 @@ import java.time.Duration;
 
 @Entity
 @Getter
+@NoArgsConstructor
 public class Movie {
 
     @Id
