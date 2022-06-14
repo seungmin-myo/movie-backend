@@ -1,15 +1,13 @@
 package com.vtw.dna.movie;
 
-import com.vtw.dna.employee.Employee;
-import com.vtw.dna.movie.discount.policy.AmountDiscountPolicy;
 import com.vtw.dna.movie.discount.policy.DefaultDiscountPolicy;
 import com.vtw.dna.movie.discount.policy.DiscountPolicy;
 import com.vtw.dna.movie.screening.Screening;
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
-import java.sql.Clob;
 import java.time.Duration;
 
 @Entity
@@ -42,12 +40,12 @@ public class Movie {
     private String rated;
 
     // 영화 관람 금액
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "fee_id")
     private Money fee;
 
     // 영화 할인 정책 정보
-    @OneToOne(targetEntity = DefaultDiscountPolicy.class, cascade = CascadeType.ALL)
+    @OneToOne(targetEntity = DefaultDiscountPolicy.class, cascade = CascadeType.ALL, orphanRemoval = true)
     private DiscountPolicy discountPolicy;
 
     public void setFee(Money fee) {
@@ -81,4 +79,20 @@ public class Movie {
         return this;
     }
 
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", advanceTicketSale='" + advanceTicketSale + '\'' +
+                ", openingDate='" + openingDate + '\'' +
+                ", runningTime=" + runningTime +
+                ", genre='" + genre + '\'' +
+                ", description='" + description + '\'' +
+                ", image='" + image + '\'' +
+                ", rated='" + rated + '\'' +
+                ", fee=" + fee +
+                ", discountPolicy=" + discountPolicy +
+                '}';
+    }
 }

@@ -186,7 +186,7 @@ public class ScreeningInitializer implements SampleDataInitializer {
         create(screening1_3);
         create(screening2_1);
         create(screening2_2);
-        create(screening3_3);
+        create(screening2_3);
         create(screening3_1);
         create(screening3_2);
         create(screening3_3);

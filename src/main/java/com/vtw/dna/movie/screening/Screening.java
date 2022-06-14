@@ -20,7 +20,7 @@ public class Screening {
     private Long id;
 
     // 영화
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     private Movie movie;
 
     // 회차
@@ -66,6 +66,4 @@ public class Screening {
         this.whenScreened = newOne.whenScreened;
         return this;
     }
-
-
 }
