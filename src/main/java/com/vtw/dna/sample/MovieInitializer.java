@@ -150,7 +150,7 @@ public class MovieInitializer implements SampleDataInitializer {
                         "베이비 박스,\n" +
                         "그곳에서 의도치 않게 만난 이들의\n" +
                         "예기치 못한 특별한 여정이 시작된다.",
-                "/assets/movie/poster/마녀2.jpg",
+                "/assets/movie/poster/브로커.jpg",
                 "15",
                 Money.wons(10000),
                 new PercentDiscountPolicy(0.1,
