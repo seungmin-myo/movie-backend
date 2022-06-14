@@ -3,11 +3,18 @@ package com.vtw.dna.movie.discount.policy;
 import com.vtw.dna.movie.discount.condition.DiscountCondition;
 import com.vtw.dna.movie.Money;
 import com.vtw.dna.movie.screening.Screening;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
 
 // 비율 할인 정책
+@Entity
+@DiscriminatorValue("persent")
+@Getter
+@NoArgsConstructor
 public class PercentDiscountPolicy extends DefaultDiscountPolicy {
 
-    // 할인비율
     private double percent;
 
     public PercentDiscountPolicy(double percent, DiscountCondition... conditions) {

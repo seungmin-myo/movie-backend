@@ -1,18 +1,32 @@
 package com.vtw.dna.movie.discount.policy;
 
+import com.vtw.dna.movie.discount.condition.DefaultDiscountCondition;
 import com.vtw.dna.movie.discount.condition.DiscountCondition;
 import com.vtw.dna.movie.Money;
 import com.vtw.dna.movie.screening.Screening;
+import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 // 할인정책 추상 클래스
 // 상영 정보가 할인 조건에 맞는지 확인 후 getDiscount를 호출하여 할인 금액을 계산하여 반환
+//@MappedSuperclass
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="discount_policy_type")
+@NoArgsConstructor
 public abstract class DefaultDiscountPolicy implements DiscountPolicy{
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     // 할인 정책 목록
+//    @OneToMany(targetEntity = DefaultDiscountCondition.class)
+    @Transient
     private List<DiscountCondition> conditions = new ArrayList<>();
 
     public DefaultDiscountPolicy(DiscountCondition ... discountConditions) {
@@ -29,7 +43,7 @@ public abstract class DefaultDiscountPolicy implements DiscountPolicy{
             }
         }
         // 해당하지 않는다면 할인금액은 0원
-        return Money.ZERO;
+        return Money.wons(0);
     }
 
     // 상영 정보를 기준으로 할인 금액을 계산 후 반환

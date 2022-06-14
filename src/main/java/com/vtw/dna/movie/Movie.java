@@ -27,20 +27,27 @@ public class Movie {
     // 상영 시간
     private Duration runningTime;
 
-    private BigDecimal cost;
+//    private BigDecimal cost;
 
     // 영화 관람 금액
-    @Transient
+//    @Transient
+    @OneToOne
+    @JoinColumn(name = "fee_id")
     private Money fee;
 
     // 영화 할인 정책 정보
-    @Transient
+//    @Transient
+    @OneToOne(targetEntity = DefaultDiscountPolicy.class)
     private DiscountPolicy discountPolicy;
+
+    public void setFee(Money fee) {
+        this.fee = fee;
+    }
 
     public Movie(String title, Duration runningTime, BigDecimal cost, Money fee, DiscountPolicy discountPolicy) {
         this.title = title;
         this.runningTime = runningTime;
-        this.cost = cost;
+//        this.cost = cost;
         this.fee = fee;
         this.discountPolicy = discountPolicy;
     }
@@ -53,8 +60,9 @@ public class Movie {
     public Movie update(Movie newOne) {
         this.title = newOne.title;
         this.runningTime = newOne.runningTime;
-//        this.fee = newOne.fee;
-//        this.discountPolicy = newOne.discountPolicy;
+//        this.cost = newOne.cost;
+        this.fee = newOne.fee;
+        this.discountPolicy = newOne.discountPolicy;
         return this;
     }
 

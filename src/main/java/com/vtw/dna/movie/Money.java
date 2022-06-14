@@ -1,15 +1,26 @@
 package com.vtw.dna.movie;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.math.BigDecimal;
 import java.util.Objects;
 
+@Entity
 @Getter
+@NoArgsConstructor
 public class Money {
-    public static final Money ZERO = Money.wons(0);
+//    public static final Money ZERO = Money.wons(0);
 
-    private final BigDecimal amount;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private BigDecimal amount;
 
     public static Money wons(long amount) {
         return new Money(BigDecimal.valueOf(amount));
