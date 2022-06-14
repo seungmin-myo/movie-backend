@@ -5,12 +5,14 @@ import com.vtw.dna.movie.Movie;
 import com.vtw.dna.movie.reservation.Reservation;
 import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
 @Getter
+@NoArgsConstructor
 public class Screening {
 
     @Id
@@ -26,6 +28,12 @@ public class Screening {
 
     // 시작 시간
     private LocalDateTime whenScreened;
+
+    public Screening(Movie movie, int sequence, LocalDateTime whenScreened) {
+        this.movie = movie;
+        this.sequence = sequence;
+        this.whenScreened = whenScreened;
+    }
 
     // 시작 시간 반환
     public LocalDateTime getStartTime() {

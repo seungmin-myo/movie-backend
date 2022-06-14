@@ -5,8 +5,8 @@ import com.vtw.dna.movie.screening.Screening;
 import javax.persistence.*;
 
 @Entity
-//@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-//@DiscriminatorColumn(name="condition_type")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="condition_type")
 public abstract class DefaultDiscountCondition implements DiscountCondition {
 
     @Id

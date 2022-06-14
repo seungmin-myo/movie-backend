@@ -11,9 +11,11 @@ import javax.annotation.PostConstruct;
 public class SampleInitializerConfiguration {
 
     @Autowired private MovieInitializer movieInitializer;
+    @Autowired private ScreeningInitializer screeningInitializer;
 
     @PostConstruct
     public void init() {
         movieInitializer.generateData();
+        screeningInitializer.generateData();
     }
 }
