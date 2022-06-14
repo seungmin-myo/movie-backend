@@ -42,32 +42,32 @@ public class MovieController {
     public Movie create(@RequestBody Movie newOne) {
 
         // avatar sample
-        Movie avatar = new Movie("아바타",
-                Duration.ofMinutes(120),
-                BigDecimal.valueOf(10000),
-                Money.wons(10000),
-                new AmountDiscountPolicy(Money.wons(800),
-                        new SequenceCondition(1),
-                        new SequenceCondition(10),
-                        new PeriodCondition(DayOfWeek.MONDAY, LocalTime.of(10,0), LocalTime.of(11,59)),
-                        new PeriodCondition(DayOfWeek.THURSDAY, LocalTime.of(10,0), LocalTime.of(20,59))));
-
-        // titanic sample
-        Movie titanic = new Movie("아바타",
-                Duration.ofMinutes(180),
-                BigDecimal.valueOf(10000),
-                Money.wons(10000),
-                new PercentDiscountPolicy(0.1,
-                        new SequenceCondition(2),
-                        new PeriodCondition(DayOfWeek.TUESDAY, LocalTime.of(14,0), LocalTime.of(16,59)),
-                        new PeriodCondition(DayOfWeek.THURSDAY, LocalTime.of(10,0), LocalTime.of(13,59))));
-
-        // starwars sample
-        Movie starwars = new Movie("스타워즈",
-                Duration.ofMinutes(210),
-                BigDecimal.valueOf(10000),
-                Money.wons(10000),
-                new NoneDiscountPolicy());
+//        Movie avatar = new Movie("아바타",
+//                Duration.ofMinutes(120),
+//                BigDecimal.valueOf(10000),
+//                Money.wons(10000),
+//                new AmountDiscountPolicy(Money.wons(800),
+//                        new SequenceCondition(1),
+//                        new SequenceCondition(10),
+//                        new PeriodCondition(DayOfWeek.MONDAY, LocalTime.of(10,0), LocalTime.of(11,59)),
+//                        new PeriodCondition(DayOfWeek.THURSDAY, LocalTime.of(10,0), LocalTime.of(20,59))));
+//
+//        // titanic sample
+//        Movie titanic = new Movie("아바타",
+//                Duration.ofMinutes(180),
+//                BigDecimal.valueOf(10000),
+//                Money.wons(10000),
+//                new PercentDiscountPolicy(0.1,
+//                        new SequenceCondition(2),
+//                        new PeriodCondition(DayOfWeek.TUESDAY, LocalTime.of(14,0), LocalTime.of(16,59)),
+//                        new PeriodCondition(DayOfWeek.THURSDAY, LocalTime.of(10,0), LocalTime.of(13,59))));
+//
+//        // starwars sample
+//        Movie starwars = new Movie("스타워즈",
+//                Duration.ofMinutes(210),
+//                BigDecimal.valueOf(10000),
+//                Money.wons(10000),
+//                new NoneDiscountPolicy());
 
         repository.save(newOne);
         return newOne;

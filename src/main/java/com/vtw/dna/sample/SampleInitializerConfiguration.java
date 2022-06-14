@@ -14,6 +14,6 @@ public class SampleInitializerConfiguration {
 
     @PostConstruct
     public void init() {
-//        movieInitializer.generateData();
+        movieInitializer.generateData();
     }
 }

@@ -18,7 +18,7 @@ public class AmountDiscountPolicy extends DefaultDiscountPolicy {
 
     // 할인금액
 //    @Transient
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "discount_amount_id")
     private Money discountAmount;
 

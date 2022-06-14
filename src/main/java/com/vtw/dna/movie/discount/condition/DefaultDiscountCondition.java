@@ -1,5 +1,7 @@
 package com.vtw.dna.movie.discount.condition;
 
+import com.vtw.dna.movie.screening.Screening;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,4 +12,10 @@ public abstract class DefaultDiscountCondition implements DiscountCondition {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    public boolean isSatisfiedBy(Screening screening) {
+        return isSatisfied(screening);
+    }
+
+    abstract protected boolean isSatisfied(Screening screening);
 }
