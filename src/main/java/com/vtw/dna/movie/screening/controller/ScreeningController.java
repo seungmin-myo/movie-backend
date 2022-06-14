@@ -1,4 +1,4 @@
-package com.vtw.dna.screening.screening.controller;
+package com.vtw.dna.movie.screening.controller;
 
 import com.vtw.dna.movie.screening.Screening;
 import com.vtw.dna.movie.screening.repository.ScreeningRepository;
@@ -11,7 +11,7 @@ import java.util.List;
 @Slf4j
 @RestController
 @AllArgsConstructor
-@RequestMapping("/scrennings")
+@RequestMapping("/screenings")
 public class ScreeningController {
 
     private final ScreeningRepository repository;
