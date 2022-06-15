@@ -2,6 +2,7 @@ package com.vtw.dna.movie.screening.controller;
 
 import com.vtw.dna.movie.screening.Screening;
 import com.vtw.dna.movie.screening.repository.ScreeningRepository;
+import com.vtw.dna.movie.screening.service.ScreeningService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -14,39 +15,31 @@ import java.util.List;
 @RequestMapping("/screenings")
 public class ScreeningController {
 
-    private final ScreeningRepository repository;
+    private final ScreeningService service;
 
     @GetMapping
-    public List<Screening> list() {
-        List<Screening> screenings = repository.findAll();
-        return screenings;
+    public List<Screening> list(Long movieId) {
+        return service.list(movieId);
     }
 
     @GetMapping("/{id}")
     public Screening find(@PathVariable Long id) {
-        Screening screening = repository.findById(id).orElseThrow();
-        return screening;
+        return service.find(id);
     }
 
     @PostMapping
     public Screening create(@RequestBody Screening newOne) {
-        repository.save(newOne);
-        return newOne;
+        return service.create(newOne);
     }
 
     @PutMapping("/{id}")
     public Screening update(@PathVariable Long id, @RequestBody Screening newOne) {
-        Screening oldOne = repository.findById(id).orElseThrow();
-        oldOne.update(newOne);
-        repository.save(oldOne);
-        return oldOne;
+        return service.update(id, newOne);
     }
 
     @DeleteMapping("/{id}")
     public Screening delete(@PathVariable Long id) {
-        Screening oldOne = repository.findById(id).orElseThrow();
-        repository.delete(oldOne);
-        return oldOne;
+        return service.delete(id);
     }
 
 }

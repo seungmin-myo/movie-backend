@@ -29,7 +29,9 @@ public class Reservation {
     private BigDecimal discountCost;
 
     // 금액
-    @Transient
+//    @Transient
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "fee_id")
     private Money fee;
 
     // 인원 수

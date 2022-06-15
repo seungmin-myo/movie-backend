@@ -1,5 +1,6 @@
 package com.vtw.dna.movie.discount.policy;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.vtw.dna.movie.discount.condition.DefaultDiscountCondition;
 import com.vtw.dna.movie.discount.condition.DiscountCondition;
 import com.vtw.dna.movie.Money;
@@ -29,6 +30,7 @@ public abstract class DefaultDiscountPolicy implements DiscountPolicy{
 //    @Transient
     private List<DiscountCondition> conditions = new ArrayList<>();
 
+    @JsonIgnore
     public DefaultDiscountPolicy(DiscountCondition ... discountConditions) {
         this.conditions = Arrays.asList(discountConditions);
     }

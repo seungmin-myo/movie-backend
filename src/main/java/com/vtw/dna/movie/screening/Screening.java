@@ -66,4 +66,8 @@ public class Screening {
         this.whenScreened = newOne.whenScreened;
         return this;
     }
+
+    public void setMovie(Movie movie) {
+        this.movie = movie;
+    }
 }
