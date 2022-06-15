@@ -2,7 +2,6 @@ package com.vtw.dna.movie.reservation.controller;
 
 import com.vtw.dna.movie.Movie;
 import com.vtw.dna.movie.reservation.Reservation;
-import com.vtw.dna.movie.reservation.repository.ReservationRepository;
 import com.vtw.dna.movie.reservation.service.ReservationService;
 import com.vtw.dna.movie.screening.Screening;
 import com.vtw.dna.movie.service.MovieService;
@@ -51,9 +50,9 @@ public class ReservationController {
     @PostMapping("/calculateFee")
     public Reservation calculateFee(@RequestBody Reservation newOne) {
         Screening screening = newOne.getScreening();
-//        Long movieId = screening.getMovie().getId();
-//        Movie movie = movieService.find(movieId);
-//        newOne.getScreening().setMovie(movie);
+        Long movieId = screening.getMovie().getId();
+        Movie movie = movieService.find(movieId);
+        newOne.getScreening().setMovie(movie);
         Reservation reservation = screening.reserve(newOne.getCustomerName(), newOne.getAudienceCount());
         return reservation;
     }

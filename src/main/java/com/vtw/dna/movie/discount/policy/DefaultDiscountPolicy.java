@@ -27,10 +27,8 @@ public abstract class DefaultDiscountPolicy implements DiscountPolicy{
 
     // 할인 정책 목록
     @OneToMany(targetEntity = DefaultDiscountCondition.class, cascade = CascadeType.ALL, orphanRemoval = true)
-//    @Transient
     private List<DiscountCondition> conditions = new ArrayList<>();
 
-    @JsonIgnore
     public DefaultDiscountPolicy(DiscountCondition ... discountConditions) {
         this.conditions = Arrays.asList(discountConditions);
     }

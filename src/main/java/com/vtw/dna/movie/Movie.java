@@ -1,5 +1,6 @@
 package com.vtw.dna.movie;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.vtw.dna.movie.discount.policy.DefaultDiscountPolicy;
 import com.vtw.dna.movie.discount.policy.DiscountPolicy;
 import com.vtw.dna.movie.screening.Screening;
@@ -45,6 +46,7 @@ public class Movie {
     private Money fee;
 
     // 영화 할인 정책 정보
+    @JsonIgnore
     @OneToOne(targetEntity = DefaultDiscountPolicy.class, cascade = CascadeType.ALL, orphanRemoval = true)
     private DiscountPolicy discountPolicy;
 
