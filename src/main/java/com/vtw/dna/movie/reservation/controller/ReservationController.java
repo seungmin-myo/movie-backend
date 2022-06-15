@@ -13,12 +13,16 @@ import java.util.List;
 
 @Slf4j
 @RestController
-@AllArgsConstructor
 @RequestMapping("/reservations")
 public class ReservationController {
 
     private final ReservationService service;
     private final MovieService movieService;
+
+    public ReservationController(ReservationService service, MovieService movieService) {
+        this.service = service;
+        this.movieService = movieService;
+    }
 
     @GetMapping
     public List<Reservation> list() {

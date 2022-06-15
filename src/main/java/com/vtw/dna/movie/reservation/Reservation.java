@@ -23,7 +23,8 @@ public class Reservation {
     private String customerName;
 
     // 상영 정보
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
+//    @ManyToOne(fetch = FetchType.LAZY)
     private Screening screening;
 
     private BigDecimal discountCost;

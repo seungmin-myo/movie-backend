@@ -18,8 +18,7 @@ public class MovieController {
 
     @GetMapping
     public List<Movie> list() {
-        List<Movie> movies = service.list();
-        return movies;
+        return service.list();
     }
 
     @GetMapping("/{id}")
